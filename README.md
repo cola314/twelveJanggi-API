@@ -19,7 +19,7 @@ Game.set_first(1);
 Game.set_fisrt(2);
 ~~~
 
-## Game.getBoard
+## Game.get_board
 * returns MAL[3][4]
 현재 보드 정보를 반환한다
 보드 정보는 MAL 객체 배열로 반환된다
