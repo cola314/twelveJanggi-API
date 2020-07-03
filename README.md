@@ -63,7 +63,7 @@ if(Game.button_click(player, 2, 2) == 2) {
 게임 말의 종류, 진행 가능 방향, 상태를 정의
 
 ## MAL.type
-* type : <string>
+* type : <[string]> 
   + "Wang" 왕(王)
   + "Sang" 상(相)
   + "Jang" 장(將)
@@ -76,5 +76,5 @@ if(Game.button_click(player, 2, 2) == 2) {
   + 2   플레이어 2
   
 ## MAL.highlighted
-* type : <boolean>
+* type : <?boolean>
 플레이어가 말을 선택하면 이동 가능한 칸이 하이라이트 되는데 이 여부를 반환
