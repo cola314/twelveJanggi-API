@@ -2,9 +2,11 @@
 
 
 ##### 십이장기 게임을 쉽게 관리 할 수 있는 api
-<hr>
+
 
 # Game class
+전반적인 게임 조작들을 하는 클래스
+
 ## Game.init_game()
 게임 내부 설정들을 초기화
 
@@ -43,7 +45,7 @@ p2_having = Game.get_having(2);
 ~~~javascript
 // 플레이어 1이 2, 2 버튼을 눌렸을 때 
 if(Game.button_click(player, 2, 2) == 2) {
-  Game.set_turn(2);
+    Game.set_turn(2);
 }
 ~~~
 
@@ -53,8 +55,26 @@ if(Game.button_click(player, 2, 2) == 2) {
   ~~~javascript
   winner = Game.state();
   if(winner != 0) {
-    console.log(i + " is Win");
+      console.log(i + " is Win");
   }
   ~~~
   
+# MAL class
+게임 말의 종류, 진행 가능 방향, 상태를 정의
+
+## MAL.type
+* type : <string>
+  + "Wang" 왕(王)
+  + "Sang" 상(相)
+  + "Jang" 장(將)
+  + "Ja"   자(子)
+  + "Hu"   후(侯)
   
+## MAL.player
+* type : <Number>
+  + 1   플레이어 1
+  + 2   플레이어 2
+  
+## MAL.highlighted
+* type : <boolean>
+플레이어가 말을 선택하면 이동 가능한 칸이 하이라이트 되는데 이 여부를 반환
