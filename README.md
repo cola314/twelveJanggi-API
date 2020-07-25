@@ -14,9 +14,9 @@
 말을 옮길 차례를 설정
 
 ~~~javascript
-//player는 1과 2만 가능
-Game.set_first(1);
-Game.set_fisrt(2);
+//player는 PLAYER1 (=1)과 PLAYER2 (=2)만 가능
+Game.set_first(PLAYER1);
+Game.set_fisrt(PLAYER2);
 ~~~
 
 ## Game.get_board
@@ -34,27 +34,27 @@ console.log(board[1][1].type);
 player가 딴 말을 저장한 배열을 반환
 
 ~~~javascript
-p1_having = Game.get_having(1);
-p2_having = Game.get_having(2);
+p1_having = Game.get_having(PLAYER1);
+p2_having = Game.get_having(PLAYER2);
 ~~~
 
 
-## Game.button_click(player, button_y, button_x)
-* returns {success} 무효한 입력에는 0, 말이 선택되면 1, 말이 옮겨지면 2
-  
+## Game.button_click(player, pos)
+* returns {success} 무효한 입력에는 NOTHING (=0), 말이 선택되면 SELECTED (=1), 말이 옮겨지면 MOVED (=2)
+)  
 ~~~javascript
 // 플레이어 1이 2, 2 버튼을 눌렸을 때 
-if(Game.button_click(player, 2, 2) == 2) {
-    Game.set_turn(2);
+if(Game.button_click(PLAYER1, new POS(BOARD, 2, 2)) == MOVED) {
+    Game.set_turn(PLAYER2);
 }
 ~~~
 
-## Game.state()
-* returns {state} 플레이어 1이 승리시 1, 플레이어 2가 승리시 2, 나머지 0
+## Game.state
+* returns {state} 플레이어 1이 승리시 PLAYER1 (=1), 플레이어 2가 승리시 PLAYER2 (=2), 나머지 NOTHING (=0)
   
   ~~~javascript
-  winner = Game.state();
-  if(winner != 0) {
+  winner = Game.state;
+  if(winner != NOTHING) {
       console.log(i + " is Win");
   }
   ~~~
@@ -63,12 +63,13 @@ if(Game.button_click(player, 2, 2) == 2) {
 게임 말의 종류, 진행 가능 방향, 상태를 정의
 
 ## MAL.type
-* type : {string}
-  + "Wang" 왕(王)
-  + "Sang" 상(相)
-  + "Jang" 장(將)
-  + "Ja"   자(子)
-  + "Hu"   후(侯)
+* type : {Number}
+  + Wang 왕(王)   (=0)
+  + Sang 상(相)   (=1)
+  + Jang 장(將)   (=2)
+  + Ja   자(子)   (=3)
+  + Hu   후(侯)   (=4)
+  + Mu   무(빈칸) (=5)
   
 ## MAL.player
 * type : {Number}
@@ -78,3 +79,25 @@ if(Game.button_click(player, 2, 2) == 2) {
 ## MAL.highlighted
 * type : {boolean}
 플레이어가 말을 선택하면 이동 가능한 칸이 하이라이트 되는데 이 여부를 반환
+
+## MAL.pos
+* type : {POS}
+말의 위치를 나타냄
+
+# POS Class
+위치를 표현함
+
+## POS.from
+* type {string}
+  + BOARD  (=0) 보드에 있음
+  + HAVING (=1) 플레이어가 잡은 말
+  
+## POS.y
+* type {Number}
+보드에서 y좌표를 나타냄
+플레이어가 잡은 말일경우 0~5까지의 좌표를 나타냄
+
+## POS.x
+* type {Number}
+보드에서 x좌표를 나타냄
+플레이어가 잡은 말일 경우 0임ㅖㅒ
