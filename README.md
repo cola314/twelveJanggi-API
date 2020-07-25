@@ -1,4 +1,4 @@
-# twelveJangi-API (십이장기 API)
+# twelveJanggi-API (십이장기 API)
 
 
 ##### 십이장기 게임을 쉽게 관리 할 수 있는 api
